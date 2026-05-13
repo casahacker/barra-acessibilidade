@@ -1,24 +1,195 @@
-This is free and unencumbered software released into the public domain.
+LICENÇA CASA HACKER
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+Copyright (c) 2026 Casa Hacker
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+1. DEFINIÇÕES
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+Para os fins desta licença, entende-se por:
 
-For more information, please refer to <https://unlicense.org>
+  "Software": o programa de computador originalmente disponibilizado
+  pelo Licenciante, conforme identificado no aviso de copyright acima,
+  incluindo o código-fonte, binários, documentação e demais arquivos
+  associados.
+
+  "Licenciante": a Casa Hacker, titular dos direitos autorais sobre o
+  Software, nos termos do art. 11 da Lei n.º 9.610/1998.
+
+  "Licenciado": qualquer pessoa física, jurídica, entidade governamental
+  ou organização sem fins lucrativos que obtenha uma cópia do Software e
+  faça uso dos direitos aqui outorgados.
+
+  "Contribuidor": qualquer pessoa que envie código, documentação,
+  correções ou melhorias para o Software.
+
+  "Contribuição": código, documentação ou material enviado por um
+  Contribuidor para incorporação ao Software.
+
+  "Obra Derivada": qualquer obra que, no todo ou em parte, incorpore ou
+  seja baseada no Software, conforme art. 5.º, VIII, da Lei n.º
+  9.610/1998.
+
+  "Distribuição": qualquer forma de disponibilização do Software ou de
+  Obra Derivada a terceiros, incluindo venda, sublicenciamento,
+  publicação em repositório público ou privado e fornecimento como
+  serviço (SaaS, PaaS ou IaaS).
+
+
+2. OUTORGA DA LICENÇA
+
+É concedida, gratuitamente, permissão a qualquer Licenciado que obtenha
+uma cópia do Software, para utilizá-lo sem restrições, incluindo, sem
+limitação, os direitos de usar, copiar, modificar, mesclar, publicar,
+distribuir, sublicenciar e/ou vender cópias do Software, e de permitir
+que terceiros o façam, desde que observada a seguinte condição:
+
+CONDIÇÃO INAFASTÁVEL: O aviso de direitos autorais acima e este aviso de
+permissão deverão ser incluídos em todas as cópias ou partes substanciais
+do Software. Os direitos morais do autor são inalienáveis e
+irrenunciáveis, nos termos do art. 27 da Lei n.º 9.610/1998.
+
+A condição acima será considerada cumprida quando o aviso completo
+estiver disponível em arquivo denominado LICENSE, LICENÇA ou equivalente,
+localizado no diretório raiz do Software ou em diretório de fácil
+localização para o Licenciado.
+
+
+3. OUTORGA DE PATENTES
+
+O Licenciante concede ao Licenciado, nos termos da Lei n.º 9.279/1996,
+licença não exclusiva, gratuita, mundial e irrevogável para uso de
+eventuais patentes de invenção ou modelo de utilidade incorporadas no
+Software, estritamente para o exercício dos direitos previstos nesta
+licença.
+
+Esta licença patentária extingue-se automaticamente, sem necessidade de
+notificação, se o Licenciado iniciar qualquer ação judicial ou
+administrativa contra o Licenciante, seus Contribuidores ou usuários do
+Software, alegando violação de patente pelo Software ou por suas
+funcionalidades.
+
+
+4. CONTRIBUIÇÕES
+
+Cada Contribuidor que envie código, documentação ou outro material para
+incorporação ao Software concede, automaticamente e sem necessidade de
+instrumento adicional:
+
+  (a) ao Licenciante e a todos os usuários do Software, licença não
+      exclusiva, gratuita, mundial e irrevogável para usar, copiar,
+      modificar, mesclar, publicar, distribuir e sublicenciar sua
+      Contribuição, nos mesmos termos desta licença;
+
+  (b) licença sobre eventuais patentes de invenção ou modelo de utilidade
+      relacionadas à Contribuição, nos termos da Cláusula 3.
+
+Os direitos morais do Contribuidor sobre sua Contribuição são preservados
+e considerados inalienáveis, nos termos do art. 27 da Lei n.º 9.610/1998.
+
+
+5. ATRIBUIÇÃO E AVISOS
+
+O Licenciante manterá, sempre que possível, arquivo denominado AUTHORS,
+CONTRIBUTORS ou equivalente, com a relação dos Contribuidores que tenham
+enviado modificações relevantes ao Software, em cumprimento ao direito
+moral de paternidade da obra previsto no art. 24, I, da Lei n.º
+9.610/1998.
+
+O Licenciado que distribuir Obra Derivada deverá preservar todos os
+avisos de copyright, atribuições, créditos e referências a Contribuidores
+existentes no Software original, podendo acrescentar avisos próprios
+relativos à Obra Derivada.
+
+
+6. ISENÇÃO DE GARANTIAS
+
+O SOFTWARE É FORNECIDO "NO ESTADO EM QUE SE ENCONTRA" (AS IS), SEM
+GARANTIA DE QUALQUER NATUREZA, EXPRESSA OU IMPLÍCITA, INCLUINDO, MAS
+NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO (MERCHANTABILITY),
+ADEQUAÇÃO A UMA FINALIDADE ESPECÍFICA, AUSÊNCIA DE VÍCIOS OCULTOS E
+NÃO VIOLAÇÃO DE DIREITOS DE TERCEIROS.
+
+
+7. LIMITAÇÃO DE RESPONSABILIDADE
+
+Em nenhuma hipótese o Licenciante, seus Contribuidores ou agentes serão
+responsabilizados por danos indiretos, incidentais, especiais, punitivos
+ou consequenciais (incluindo lucros cessantes, perda de dados ou
+interrupção de negócios), seja em ação contratual ou extracontratual
+(arts. 186, 927, CC/2002), mesmo que previamente informados da
+possibilidade de tais danos.
+
+EXCEÇÕES (sem limitação de responsabilidade):
+  - Ato doloso ou fraudulento do Licenciante (art. 422, CC/2002);
+  - Danos à integridade física ou à vida;
+  - Tratamento ilícito de dados pessoais (art. 42, LGPD).
+
+
+8. PROTEÇÃO DE DADOS PESSOAIS (LGPD)
+
+O Licenciado é o único responsável pela conformidade do uso deste
+Software com a Lei n.º 13.709/2018 (LGPD), incluindo a definição de
+finalidades, bases legais, atendimento de direitos dos titulares e adoção
+de medidas de segurança. O Licenciante não assume responsabilidade pelo
+tratamento de dados pessoais realizado pelo Licenciado por meio deste
+Software.
+
+
+9. CONFORMIDADE REGULATÓRIA
+
+O Licenciado declara que o uso do Software é lícito em sua jurisdição e
+que não o empregará para finalidades proibidas pela legislação
+brasileira, incluindo a Lei n.º 12.846/2013 (Anticorrupção) e a Lei n.º
+9.613/1998 (Lavagem de Dinheiro). O Licenciado que atuar em setores
+regulados é o único responsável por obter as licenças e autorizações
+exigidas pelas autoridades competentes.
+
+
+10. FORÇA MAIOR
+
+O Licenciante não será responsabilizado por falhas decorrentes de caso
+fortuito ou força maior (art. 393, CC/2002). Esta escusa não se aplica às
+obrigações de proteção de dados pessoais já coletados nem à condição de
+manutenção do aviso de direitos autorais.
+
+
+11. RESCISÃO E RESTABELECIMENTO
+
+Esta licença será automaticamente rescindida em caso de violação de
+qualquer de suas cláusulas, independentemente de notificação judicial ou
+extrajudicial.
+
+Contudo:
+
+  (a) o Licenciado poderá restabelecer seus direitos se sanar a violação
+      no prazo de 30 (trinta) dias contados do conhecimento ou
+      notificação da violação;
+
+  (b) o restabelecimento aplica-se uma única vez por Licenciado;
+      reincidências não admitem novo prazo de cura;
+
+  (c) com a rescisão definitiva, o Licenciado deverá cessar
+      imediatamente todo uso do Software e destruir ou devolver as
+      cópias em seu poder.
+
+A rescisão desta licença não afeta os direitos previamente concedidos a
+terceiros que tenham recebido o Software ou Obra Derivada de boa-fé.
+
+
+12. LEI APLICÁVEL E FORO
+
+Este instrumento é regido exclusivamente pelas leis da República
+Federativa do Brasil, especialmente pela Lei n.º 9.610/1998 (Direitos
+Autorais), pela Lei n.º 9.279/1996 (Propriedade Industrial), pelo Código
+Civil (Lei n.º 10.406/2002) e pela Lei n.º 13.709/2018 (LGPD).
+
+As partes comprometem-se à resolução amigável de controvérsias.
+Persistindo o conflito, fica eleito o foro da Comarca de São Paulo/SP,
+com exclusão de qualquer outro, por mais privilegiado que seja.
+
+
+13. ACEITAÇÃO
+
+O uso, cópia, modificação ou distribuição deste Software implica
+aceitação integral dos termos desta licença, que constitui contrato de
+adesão nos termos do art. 54 do Código Civil (Lei n.º 10.406/2002).
+
