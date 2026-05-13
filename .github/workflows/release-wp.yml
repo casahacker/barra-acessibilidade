@@ -1,0 +1,38 @@
+name: Release WordPress Plugin
+
+on:
+  push:
+    tags:
+      - "wp-v*"
+
+jobs:
+  build-zip:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -F @casahacker/accessibility-bar build
+      - run: pnpm -F @casahacker/accessibility-bar-standalone build
+      - name: Copy assets to plugin dir
+        run: |
+          mkdir -p plugin-wp/casa-hacker-a11y/assets
+          cp packages/standalone/dist/bar.iife.js plugin-wp/casa-hacker-a11y/assets/
+          cp packages/standalone/dist/bar.css plugin-wp/casa-hacker-a11y/assets/
+      - name: Create zip
+        run: |
+          cd plugin-wp
+          zip -r casa-hacker-a11y.zip casa-hacker-a11y/
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: plugin-wp/casa-hacker-a11y.zip
+          generate_release_notes: true

@@ -1,0 +1,67 @@
+{
+  "name": "@casahacker/accessibility-bar",
+  "version": "0.1.0",
+  "description": "Barra fixa de acessibilidade WCAG-aligned com 12 features (incluindo VLibras lazy-load). React + standalone IIFE.",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "author": "Casa Hacker",
+  "homepage": "https://github.com/casahacker/barra-acessibilidade",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/casahacker/barra-acessibilidade.git",
+    "directory": "packages/react"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "react",
+    "vlibras",
+    "libras",
+    "acessibilidade",
+    "casa-hacker"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/bar.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitest/coverage-v8": "^2.1.4",
+    "happy-dom": "^15.7.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  }
+}

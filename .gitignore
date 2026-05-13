@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+*.log
+.env
+.env.local
+coverage
+.turbo
+*.tgz
+plugin-wp/casa-hacker-a11y/assets/bar.iife.js
+plugin-wp/casa-hacker-a11y/assets/bar.css

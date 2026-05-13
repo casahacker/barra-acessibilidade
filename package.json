@@ -1,0 +1,23 @@
+{
+  "name": "barra-acessibilidade",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo da barra de acessibilidade da Casa Hacker — pacote React + standalone IIFE + plugin WordPress",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Casa Hacker",
+  "homepage": "https://github.com/casahacker/barra-acessibilidade",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/casahacker/barra-acessibilidade.git"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "dev:react": "pnpm --filter vite-react dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

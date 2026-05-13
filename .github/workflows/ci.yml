@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r lint
+      - run: pnpm -r build
+      - run: pnpm -F @casahacker/accessibility-bar test
+      - name: Check bundle size
+        run: |
+          ls -lh packages/standalone/dist/
+          gzip -c packages/standalone/dist/bar.iife.js | wc -c | awk '{
+            kb=$1/1024;
+            printf "Standalone IIFE gzipped: %.1f KB\n", kb;
+            if (kb > 25) { print "FAIL: bundle excede 25KB"; exit 1 }
+          }'

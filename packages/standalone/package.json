@@ -1,0 +1,20 @@
+{
+  "name": "@casahacker/accessibility-bar-standalone",
+  "version": "0.1.0",
+  "description": "Build IIFE da barra de acessibilidade Casa Hacker — para <script> tag e WordPress.",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@casahacker/accessibility-bar": "workspace:*",
+    "preact": "^10.24.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  }
+}
