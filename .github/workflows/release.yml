@@ -1,0 +1,137 @@
+name: Release
+
+# Distribuição sem npm registry — usa GitHub Releases + jsDelivr CDN.
+#
+# Trigger: workflow_dispatch manual com input "version" (ex: 0.1.0).
+# Resultado:
+#   1. Builda packages/react + packages/standalone
+#   2. Atualiza version no package.json de cada pacote
+#   3. Commita os dist/ buildados em main (commit "release: vX.Y.Z")
+#   4. Cria tag vX.Y.Z apontando pro commit
+#   5. Empacota tarball npm pra `npm install <url>`
+#   6. Empacota .zip do plugin WP
+#   7. Cria GitHub Release com 4 assets:
+#      - accessibility-bar-vX.Y.Z.tgz  (tarball npm pra React)
+#      - casa-hacker-a11y.zip           (plugin WordPress)
+#      - bar.iife.js                    (standalone JS)
+#      - bar.css                        (standalone CSS)
+#
+# Após o release:
+#   - Script tag (CDN): https://cdn.jsdelivr.net/gh/casahacker/barra-acessibilidade@vX.Y.Z/packages/standalone/dist/bar.iife.js
+#   - React via tarball: npm install <url-do-tgz>
+#   - WP: download do zip + upload em Plugins
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versão (sem o v, ex: 0.1.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - name: Update version in package.json
+        run: |
+          VERSION="${{ inputs.version }}"
+          node -e "
+            const fs=require('fs'); const path=require('path');
+            for (const p of ['packages/react/package.json', 'packages/standalone/package.json']) {
+              const j = JSON.parse(fs.readFileSync(p,'utf8'));
+              j.version = '${VERSION}';
+              fs.writeFileSync(p, JSON.stringify(j, null, 2) + '\n');
+            }
+          "
+          # Atualiza versão no PHP do plugin WP
+          sed -i "s/^ \* Version: .*/ * Version: ${VERSION}/" plugin-wp/casa-hacker-a11y/casa-hacker-a11y.php
+          sed -i "s/define('CH_A11Y_VERSION', '.*');/define('CH_A11Y_VERSION', '${VERSION}');/" plugin-wp/casa-hacker-a11y/casa-hacker-a11y.php
+          sed -i "s/^Stable tag: .*/Stable tag: ${VERSION}/" plugin-wp/casa-hacker-a11y/readme.txt
+
+      - name: Build packages
+        run: |
+          pnpm -F @casahacker/accessibility-bar build
+          pnpm -F @casahacker/accessibility-bar-standalone build
+
+      - name: Copy standalone assets to plugin WP
+        run: |
+          mkdir -p plugin-wp/casa-hacker-a11y/assets
+          cp packages/standalone/dist/bar.iife.js plugin-wp/casa-hacker-a11y/assets/
+          cp packages/standalone/dist/bar.css plugin-wp/casa-hacker-a11y/assets/
+
+      - name: Generate npm tarball
+        id: tarball
+        run: |
+          cd packages/react
+          # `pnpm pack` gera <name>-<version>.tgz; renomeio pra padrão fixo
+          pnpm pack
+          mv casahacker-accessibility-bar-*.tgz ../../accessibility-bar-v${{ inputs.version }}.tgz
+          cd ../..
+          ls -lh accessibility-bar-v${{ inputs.version }}.tgz
+
+      - name: Generate WP plugin zip
+        run: |
+          cd plugin-wp
+          zip -r ../casa-hacker-a11y.zip casa-hacker-a11y/
+          cd ..
+          ls -lh casa-hacker-a11y.zip
+
+      - name: Commit dist files for jsDelivr CDN
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Força inclusão dos dist mesmo se gitignored
+          git add -f packages/standalone/dist/bar.iife.js packages/standalone/dist/bar.css
+          git add -f packages/react/dist/
+          git add packages/react/package.json packages/standalone/package.json
+          git add plugin-wp/casa-hacker-a11y/casa-hacker-a11y.php plugin-wp/casa-hacker-a11y/readme.txt
+          git commit -m "release: v${{ inputs.version }}" || echo "Sem mudanças pra commitar"
+          git push origin HEAD:main
+
+      - name: Create tag
+        run: |
+          git tag "v${{ inputs.version }}"
+          git push origin "v${{ inputs.version }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ inputs.version }}"
+          name: "v${{ inputs.version }}"
+          generate_release_notes: true
+          files: |
+            accessibility-bar-v${{ inputs.version }}.tgz
+            casa-hacker-a11y.zip
+            packages/standalone/dist/bar.iife.js
+            packages/standalone/dist/bar.css
+          body: |
+            ## Instalação
+
+            ### Script tag (CDN)
+            ```html
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/casahacker/barra-acessibilidade@v${{ inputs.version }}/packages/standalone/dist/bar.css">
+            <script src="https://cdn.jsdelivr.net/gh/casahacker/barra-acessibilidade@v${{ inputs.version }}/packages/standalone/dist/bar.iife.js" data-auto="true"></script>
+            ```
+
+            ### React / Vite / Next.js
+            ```bash
+            npm install https://github.com/casahacker/barra-acessibilidade/releases/download/v${{ inputs.version }}/accessibility-bar-v${{ inputs.version }}.tgz
+            ```
+
+            ### WordPress
+            Baixe `casa-hacker-a11y.zip` abaixo e instale via **Plugins → Adicionar Novo → Enviar Plugin**.
