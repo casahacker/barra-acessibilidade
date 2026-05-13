@@ -17,8 +17,10 @@ jobs:
           node-version: "20"
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -r lint
+      # Build antes de lint: o standalone consome o pacote react já buildado
+      # via "workspace:*" (precisa do dist/index.d.ts pra tsc resolver imports).
       - run: pnpm -r build
+      - run: pnpm -r lint
       - run: pnpm -F @casahacker/accessibility-bar test
       - name: Check bundle size
         run: |
